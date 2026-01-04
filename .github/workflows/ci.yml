@@ -1,0 +1,49 @@
+name: CI - Test, Build, Docker Push (Every Commit)
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["*"]
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: gradle
+
+      - name: Run tests
+        run: ./gradlew clean test
+
+      - name: Build application
+        run: ./gradlew build -x test
+
+      - name: Compute image tag
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            echo "IMAGE_TAG=${GITHUB_REF_NAME}" >> $GITHUB_ENV
+          else
+            REF_NAME=${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}
+            TAG=$(echo "${REF_NAME}-${GITHUB_SHA::7}" | tr '/' '-')
+            echo "IMAGE_TAG=$TAG" >> $GITHUB_ENV
+          fi
+
+      - name: Build & Push Docker image
+        if: >
+          github.event_name == 'push' ||
+          (github.event_name == 'pull_request' &&
+           github.event.pull_request.head.repo.full_name == github.repository)
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          ./gradlew jib -DIMAGE_TAG=${IMAGE_TAG}
