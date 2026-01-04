@@ -1,3 +1,18 @@
+## Initial Setup
+
+The initial commit on `master` was created using [Spring Initializr](https://start.spring.io/).
+
+- **Build Tool:** Gradle (Groovy DSL)
+- **Language:** Java
+- **Spring Boot Version:** 3.5.9
+- **Java Version:** 21
+
+### Selected Starter Dependencies
+
+- **Spring Reactive Web**
+- **Validation**
+- **Spring Configuration Processor**
+
 ## Docker Image
 
 The application is available as a Docker image on Docker Hub:
