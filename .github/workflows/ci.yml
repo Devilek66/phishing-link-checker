@@ -49,4 +49,4 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
-          ./gradlew jib -DIMAGE_TAG=${IMAGE_TAG}
+          ./gradlew jib -DIMAGE_TAG=${IMAGE_TAG} --stacktrace
