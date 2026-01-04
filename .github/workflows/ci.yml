@@ -4,7 +4,6 @@ on:
   push:
     branches: ["**"]
     tags: ["*"]
-  pull_request:
 
 jobs:
   ci:
@@ -50,7 +49,6 @@ jobs:
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run:  |
             ./gradlew jib \
-            -DIMAGE_TAG=${IMAGE_TAG} \
+            -Djib.to.image=devilek66/phishing-link-checker:${IMAGE_TAG} \
             -Djib.to.auth.username=${DOCKERHUB_USERNAME} \
-            -Djib.to.auth.password=${DOCKERHUB_TOKEN} \
-            --stacktrace
+            -Djib.to.auth.password=${DOCKERHUB_TOKEN}
