@@ -19,6 +19,10 @@ The application is available as a Docker image on Docker Hub:
 
 - **Repository:** https://hub.docker.com/repository/docker/devilek66/phishing-link-checker/general
 
+### Image Build
+
+The Docker image is built using **Google Jib**.
+
 ### Pulling the Image
 
 Below is an **example** of how to pull a specific image tag:
