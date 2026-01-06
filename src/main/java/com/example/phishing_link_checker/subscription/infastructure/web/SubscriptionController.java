@@ -41,7 +41,7 @@ public class SubscriptionController {
             @PathVariable String phoneNumber
     ) {
         return subscriptionService
-                .isActive(new PhoneNumber(phoneNumber))
+                .findSubscription(new PhoneNumber(phoneNumber))
                 .map(subscription -> new StatusResponse(subscription.isActive()));
     }
 }

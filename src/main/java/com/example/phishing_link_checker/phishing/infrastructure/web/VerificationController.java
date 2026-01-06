@@ -4,10 +4,12 @@ import com.example.phishing_link_checker.phishing.application.PhishingDetectionS
 import com.example.phishing_link_checker.phishing.domain.Sms;
 import com.example.phishing_link_checker.phishing.infrastructure.web.dto.VerificationRequest;
 import com.example.phishing_link_checker.phishing.infrastructure.web.dto.VerificationResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -31,6 +33,7 @@ public class VerificationController {
 
         return phishingDetectionService
                 .shouldBeBlock(sms)
-                .map(VerificationResponse::new);
+                .map(VerificationResponse::new)
+                .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 }

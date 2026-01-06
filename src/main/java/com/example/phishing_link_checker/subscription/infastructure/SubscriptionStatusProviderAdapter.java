@@ -17,7 +17,7 @@ public class SubscriptionStatusProviderAdapter implements SubscriptionStatusProv
 
     @Override
     public Mono<Boolean> isSubscriptionActive(String phoneNumber) {
-        return subscriptionService.isActive(new PhoneNumber(phoneNumber))
+        return subscriptionService.findSubscription(new PhoneNumber(phoneNumber))
                 .map(Subscription::isActive);
     }
 }

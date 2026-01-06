@@ -23,7 +23,7 @@ public class SubscriptionService {
         return subscriptionRepository.save(new Subscription(phoneNumber, SubscriptionStatus.INACTIVE));
     }
 
-    public Mono<Subscription> isActive(PhoneNumber phoneNumber) {
+    public Mono<Subscription> findSubscription(PhoneNumber phoneNumber) {
         return subscriptionRepository.findByPhoneNumber(phoneNumber);
     }
 }
