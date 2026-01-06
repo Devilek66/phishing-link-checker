@@ -22,8 +22,7 @@ public class GooglePhishingDetectionAdapter implements PhishingDetectionPort {
     }
 
     @Cacheable(
-            cacheNames = "phishingScore",
-            key = "#url"
+            cacheNames = "phishingScore"
     )
     @Override
     public Mono<PhishingScore> checkUrl(String url) {
