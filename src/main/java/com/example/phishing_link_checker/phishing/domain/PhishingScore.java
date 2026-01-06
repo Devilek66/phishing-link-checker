@@ -16,4 +16,11 @@ public class PhishingScore {
     public String getUrl() {
         return url;
     }
+
+    public boolean shouldBlock() {
+        return switch (riskLevel) {
+            case MEDIUM, HIGH, CRITICAL -> true;
+            default -> false;
+        };
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.phishing_link_checker.phishing.infrastructure.google;
+package com.example.phishing_link_checker.phishing.infrastructure.detection.google;
 
 import com.example.phishing_link_checker.phishing.domain.RiskLevel;
 import com.github.tomakehurst.wiremock.WireMockServer;

@@ -1,4 +1,4 @@
-package com.example.phishing_link_checker.phishing.infrastructure.mock;
+package com.example.phishing_link_checker.phishing.infrastructure.detection.mock;
 
 import com.example.phishing_link_checker.phishing.domain.PhishingDetectionPort;
 import com.example.phishing_link_checker.phishing.domain.PhishingScore;

@@ -1,9 +1,9 @@
-package com.example.phishing_link_checker.phishing.infrastructure.google;
+package com.example.phishing_link_checker.phishing.infrastructure.detection.google;
 
 import com.example.phishing_link_checker.phishing.domain.PhishingDetectionPort;
 import com.example.phishing_link_checker.phishing.domain.PhishingScore;
-import com.example.phishing_link_checker.phishing.infrastructure.google.dto.EvaluateUriRequest;
-import com.example.phishing_link_checker.phishing.infrastructure.google.dto.EvaluateUriResponse;
+import com.example.phishing_link_checker.phishing.infrastructure.detection.google.dto.EvaluateUriRequest;
+import com.example.phishing_link_checker.phishing.infrastructure.detection.google.dto.EvaluateUriResponse;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
-package com.example.phishing_link_checker.phishing.infrastructure.google;
+package com.example.phishing_link_checker.phishing.infrastructure.detection.google;
 
-import com.example.phishing_link_checker.phishing.infrastructure.google.dto.EvaluateUriRequest;
-import com.example.phishing_link_checker.phishing.infrastructure.google.dto.EvaluateUriResponse;
+import com.example.phishing_link_checker.phishing.infrastructure.detection.google.dto.EvaluateUriRequest;
+import com.example.phishing_link_checker.phishing.infrastructure.detection.google.dto.EvaluateUriResponse;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.service.annotation.HttpExchange;
 import org.springframework.web.service.annotation.PostExchange;

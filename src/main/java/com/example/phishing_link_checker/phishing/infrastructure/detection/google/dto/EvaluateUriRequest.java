@@ -1,4 +1,4 @@
-package com.example.phishing_link_checker.phishing.infrastructure.google.dto;
+package com.example.phishing_link_checker.phishing.infrastructure.detection.google.dto;
 
 import java.util.List;
 

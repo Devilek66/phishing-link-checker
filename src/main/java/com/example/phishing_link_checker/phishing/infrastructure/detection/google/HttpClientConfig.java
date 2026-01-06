@@ -1,4 +1,4 @@
-package com.example.phishing_link_checker.phishing.infrastructure.google;
+package com.example.phishing_link_checker.phishing.infrastructure.detection.google;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
