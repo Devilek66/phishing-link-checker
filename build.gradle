@@ -2,11 +2,24 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.5.9'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'com.google.cloud.tools.jib' version '3.5.2'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 description = 'Demo project for phishing link checker'
+
+jib {
+	from {
+		image = 'eclipse-temurin:21-jre-alpine-3.23'
+	}
+	to {
+		image = 'devilek66/phishing-link-checker'
+	}
+	container {
+		ports = ['8080']
+	}
+}
 
 java {
 	toolchain {
@@ -25,11 +38,14 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
+	implementation 'com.github.ben-manes.caffeine:caffeine'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
+	testImplementation 'org.wiremock:wiremock-jetty12:3.13.2'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
